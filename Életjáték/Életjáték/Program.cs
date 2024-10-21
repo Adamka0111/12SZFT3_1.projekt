@@ -1,4 +1,5 @@
-﻿namespace Életjáték
+﻿using ÉletjátékLib;
+namespace Életjáték
 {
     class Program
     {
