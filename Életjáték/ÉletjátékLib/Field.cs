@@ -1,7 +1,3 @@
-
-
-using System;
-
 namespace ÉletjátékLib
 {
     public class Field
