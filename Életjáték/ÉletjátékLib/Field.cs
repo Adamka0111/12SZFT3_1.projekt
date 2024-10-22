@@ -155,6 +155,7 @@ namespace ÉletjátékLib
                 Environment.Exit(0);
             }
         }
+		
         private bool IsRabbitNearby(int x, int y)
         {
             foreach (Rabbit rabbit in rabbits)

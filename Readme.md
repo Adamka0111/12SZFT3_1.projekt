@@ -1,4 +1,4 @@
-#               Nyulak és Rókák
+# Nyulak és Rókák
 
 ## Tartalomjegyzék
 1 Életjáték
@@ -16,9 +16,9 @@
 A Program.cs felel a program futásáért.  
 A `Field field = new Field();` meghívja az ÉletjátékLib-ből a Field osztályt;
 A `While` ciklusban fut a kód:  
-1 `Console.Clear();`: törli az előző mezőt  
-2 `field.Display();`: kiírja a jelenlegi mezőt  
-3 `System.Threading.Thread.Sleep(1500);`: késlelteti az ismétlést 1,5 másodperccel  
+1 `Console.Clear();`: törli az előző mezőt.  
+2 `field.Display();`: kiírja a jelenlegi mezőt.  
+3 `System.Threading.Thread.Sleep(1500);`: késlelteti az ismétlést 1,5 másodperccel.  
 
 
 # ÉletjátékLib
