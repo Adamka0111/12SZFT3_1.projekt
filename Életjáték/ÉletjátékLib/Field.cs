@@ -2,23 +2,37 @@ namespace ÉletjátékLib
 {
     public class Field
     {
-        private const int Width = 10;
-        private const int Height = 10;
+        private const int Width = 15;
+        private const int Height = 15;
         private Grass[,] grid;
         private List<Rabbit> rabbits;
         private List<Fox> foxes;
         private Random random;
 
-        public Field()
+        public Field(List<string> rabbitLocations, List<string> foxLocations)
         {
             grid = new Grass[Width, Height];
             rabbits = new List<Rabbit>();
             foxes = new List<Fox>();
             random = new Random();
-            InitializeField();
+            List<int[]> rabbitCoordinates = new List<int[]>();
+            List<int[]> foxCoordinates = new List<int[]>();
+            for (int i = 0; i < rabbitLocations.Count(); i++)
+            {
+                string[] location = rabbitLocations[i].Split(", ");
+                int[] coordinates = [int.Parse(location[1])-1, int.Parse(location[2])-1];
+                rabbitCoordinates.Add(coordinates);
+            }
+            for (int i = 0; i < foxLocations.Count(); i++)
+            {
+                string[] location = foxLocations[i].Split(", ");
+                int[] coordinates = [int.Parse(location[1]) - 1, int.Parse(location[2]) - 1];
+                foxCoordinates.Add(coordinates);
+            }
+            InitializeField(rabbitCoordinates, foxCoordinates);
         }
 
-        private void InitializeField()
+        private void InitializeField(List<int[]> rabbitCoordinates, List<int[]> foxCoordinates)
         {
             for (int x = 0; x < Width; x++)
             {
@@ -28,17 +42,17 @@ namespace ÉletjátékLib
                 }
             }
 
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < rabbitCoordinates.Count(); i++)
             {
-                int x = random.Next(Width);
-                int y = random.Next(Height);
+                int x = rabbitCoordinates[i][0];
+                int y = rabbitCoordinates[i][1];
                 rabbits.Add(new Rabbit(x, y));
             }
 
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < foxCoordinates.Count(); i++)
             {
-                int x = random.Next(Width);
-                int y = random.Next(Height);
+                int x = foxCoordinates[i][0];
+                int y = foxCoordinates[i][1];
                 foxes.Add(new Fox(x, y));
             }
         }
@@ -335,7 +349,30 @@ namespace ÉletjátékLib
             {
                 for (int y = 0; y < Height; y++)
                 {
-                    Console.Write(displayGrid[x, y] + "  ");
+                    if (displayGrid[x, y] == 'R')
+                    {
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.Write($"{displayGrid[x, y]} ");
+                        Console.ForegroundColor = ConsoleColor.White;
+                    }
+                    else if (displayGrid[x, y] == 'F')
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.Write($"{displayGrid[x, y]} ");
+                        Console.ForegroundColor = ConsoleColor.White;
+                    }
+                    else if (displayGrid[x, y] == '.')
+                    {
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.Write($"{displayGrid[x, y]} ");
+                        Console.ForegroundColor = ConsoleColor.White;
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.Write($"{displayGrid[x, y]} ");
+                        Console.ForegroundColor = ConsoleColor.White;
+                    }
                 }
                 Console.WriteLine();
             }
