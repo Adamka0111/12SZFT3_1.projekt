@@ -19,13 +19,13 @@ namespace ÉletjátékLib
             List<int[]> foxCoordinates = new List<int[]>();
             for (int i = 0; i < rabbitLocations.Count(); i++)
             {
-                string[] location = rabbitLocations[i].Split(", ");
+                string[] location = rabbitLocations[i].Split(";");
                 int[] coordinates = [int.Parse(location[1])-1, int.Parse(location[2])-1];
                 rabbitCoordinates.Add(coordinates);
             }
             for (int i = 0; i < foxLocations.Count(); i++)
             {
-                string[] location = foxLocations[i].Split(", ");
+                string[] location = foxLocations[i].Split(";");
                 int[] coordinates = [int.Parse(location[1]) - 1, int.Parse(location[2]) - 1];
                 foxCoordinates.Add(coordinates);
             }
@@ -160,12 +160,12 @@ namespace ÉletjátékLib
 
             if (rabbits.Count == 0)
             {
-                Console.WriteLine("The foxes ate all the rabbits and thus they starved to death.");
+                Console.WriteLine("A rókák megették az összes nyulat.");
                 Environment.Exit(0);
             }
             else if (foxes.Count == 0)
             {
-                Console.WriteLine("The Rabbits outsmarted the foxes and lived a happy life.");
+                Console.WriteLine("A nyulak túlélték a rókákat.");
                 Environment.Exit(0);
             }
         }
@@ -337,25 +337,25 @@ namespace ÉletjátékLib
 
             foreach (Rabbit rabbit in rabbits)
             {
-                displayGrid[rabbit.X, rabbit.Y] = 'R';
+                displayGrid[rabbit.X, rabbit.Y] = 'N';
             }
 
             foreach (Fox fox in foxes)
             {
-                displayGrid[fox.X, fox.Y] = 'F';
+                displayGrid[fox.X, fox.Y] = 'R';
             }
 
             for (int x = 0; x < Width; x++)
             {
                 for (int y = 0; y < Height; y++)
                 {
-                    if (displayGrid[x, y] == 'R')
+                    if (displayGrid[x, y] == 'N')
                     {
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.Write($"{displayGrid[x, y]} ");
                         Console.ForegroundColor = ConsoleColor.White;
                     }
-                    else if (displayGrid[x, y] == 'F')
+                    else if (displayGrid[x, y] == 'R')
                     {
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.Write($"{displayGrid[x, y]} ");

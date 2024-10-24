@@ -7,8 +7,8 @@ List<string> foxLocations = new List<string>();
 int animalNumber = 0;
 while (done == false && animalNumber < 11)
 {
-    Console.WriteLine("Adjon meg 10 állat koordinátáját. Formálás: állat typusa, X koordináta, Y koordináta.\nÁllat típusa: N - nyúl, R - róka\nX, Y koordináta: 1 és 15 közötti egész szám.");
-    Console.WriteLine("Ha kész van az adatok megadásával, írja be hogy \"exit\"");
+    Console.WriteLine("Adjon meg 10 állat koordinátáját. Formálás: állat typusa;X koordináta;Y koordináta. (pl.: R;2;7)\nÁllat típusa: N - nyúl, R - róka\nX, Y koordináta: 1 és 15 közötti egész szám.");
+    Console.WriteLine("Ha kész van az adatok megadásával, írja be hogy \"exit\".");
     input = Console.ReadLine();
     if (input[0] == 'N')
     {
